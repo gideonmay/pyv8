@@ -87,7 +87,6 @@ public:
     BOOST_PP_SEQ_FOR_EACH(ADD_CALLBACK_STUBS, kAllocationActionAll, OBJECT_SPACES);
 
     v8::V8::SetArrayBufferAllocator(new MallocArrayBufferAllocator);
-
   }
 
   static void SetCallback(py::object callback, v8::ObjectSpace space, v8::AllocationAction action)
