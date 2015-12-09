@@ -520,7 +520,7 @@ def generate_probes():
         print("INFO: automatic make the build folder: %s" % build_path)
 
         try:
-            os.makedirs(build_path, 0755)
+            os.makedirs(build_path, 0o755)
         except os.error as ex:
             print("WARN: fail to create the build folder, %s" % ex)
 

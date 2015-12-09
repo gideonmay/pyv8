@@ -5,7 +5,7 @@ import PyV8
 
 class Global(PyV8.JSClass):
     def writeln(self, arg):
-        print arg
-        
+        print (arg)
+
 with PyV8.JSContext(Global()) as ctxt:
     ctxt.eval("writeln('Hello World');")
