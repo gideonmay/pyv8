@@ -56,7 +56,7 @@ if os.path.exists(v8_svn_rev_file):
 
 INCLUDE = None
 LIB = None
-DEBUG = False
+DEBUG = True
 
 MAKE = 'gmake' if is_freebsd else 'make'
 
@@ -109,6 +109,9 @@ else:
 
 source_files = ["Utils.cpp", "Exception.cpp", "Context.cpp", "Engine.cpp", "Wrapper.cpp",
                 "Debug.cpp", "Locker.cpp", "AST.cpp", "PrettyPrinter.cpp", "PyV8.cpp"]
+
+source_files = ["Utils.cpp", "Exception.cpp", "Context.cpp", "Engine.cpp", "Wrapper.cpp",
+                "Debug.cpp", "Locker.cpp", "PyV8.cpp"]
 
 macros = [
     ("BOOST_PYTHON_STATIC_LIB", None),
@@ -300,7 +303,11 @@ else:
 arch = 'x64' if is_64bit else 'arm' if is_arm else 'ia32'
 mode = 'debug' if DEBUG else 'release'
 
-libraries += ['v8_base.' + arch, 'v8_snapshot' if V8_SNAPSHOT_ENABLED else ('v8_nosnapshot.' + arch)]
+libraries += ['v8_base.' + arch,
+              'v8_snapshot' if V8_SNAPSHOT_ENABLED else ('v8_nosnapshot.' + arch),
+              'icuuc',
+              'icui18n',
+              'icudata']
 
 if is_winnt:
     library_path = icu_path = "%s/build/%s/lib/" % (V8_HOME, mode)
@@ -567,14 +574,14 @@ def prepare_v8():
 
 class build(_build):
     def run(self):
-        prepare_v8()
+        # prepare_v8()
 
         _build.run(self)
 
 
 class develop(_develop):
     def run(self):
-        prepare_v8()
+        # prepare_v8()
 
         _develop.run(self)
 

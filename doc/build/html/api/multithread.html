@@ -1,15 +1,16 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Multi-Thread and Lock &mdash; PyV8 v1.0beta documentation</title>
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <title>Multi-Thread and Lock &mdash; PyV8 1.0beta documentation</title>
+    
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -22,13 +23,13 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="PyV8 v1.0beta documentation" href="../index.html" />
+    <link rel="top" title="PyV8 1.0beta documentation" href="../index.html" />
     <link rel="up" title="Public API" href="api.html" />
     <link rel="next" title="Debugger and Profiler" href="debugger.html" />
     <link rel="prev" title="Interoperability" href="wrapper.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -43,15 +44,15 @@
         <li class="right" >
           <a href="wrapper.html" title="Interoperability"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">PyV8 v1.0beta documentation</a> &raquo;</li>
-          <li><a href="api.html" accesskey="U">Public API</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">PyV8 1.0beta documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="api.html" accesskey="U">Public API</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <span class="target" id="module-PyV8"></span><div class="section" id="multi-thread-and-lock">
 <span id="multithread"></span><h1>Multi-Thread and Lock<a class="headerlink" href="#multi-thread-and-lock" title="Permalink to this headline">¶</a></h1>
@@ -61,49 +62,6 @@
 </div>
 <div class="section" id="jsisolate">
 <h2>JSIsolate<a class="headerlink" href="#jsisolate" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="PyV8.JSIsolate">
-<em class="property">class </em><tt class="descclassname">PyV8.</tt><tt class="descname">JSIsolate</tt><a class="headerlink" href="#PyV8.JSIsolate" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
-<dt id="PyV8.JSIsolate.__enter__">
-<tt class="descname">__enter__</tt><big>(</big><big>)</big> &rarr; JSIsolate object<a class="headerlink" href="#PyV8.JSIsolate.__enter__" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="PyV8.JSIsolate.__exit__">
-<tt class="descname">__exit__</tt><big>(</big><em>exc_type</em>, <em>exc_value</em>, <em>traceback</em><big>)</big> &rarr; None<a class="headerlink" href="#PyV8.JSIsolate.__exit__" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="PyV8.JSIsolate.enter">
-<tt class="descname">enter</tt><big>(</big><big>)</big><a class="headerlink" href="#PyV8.JSIsolate.enter" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="docutils">
-<dt>enter( (JSIsolate)arg1) -&gt; None :</dt>
-<dd><p class="first">Sets this isolate as the entered one for the current thread. Saves the previously entered one (if any), so that it can be restored when exiting.  Re-entering an isolate is allowed.</p>
-<dl class="last docutils">
-<dt>C++ signature :</dt>
-<dd>void enter(class CIsolate {lvalue})</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="PyV8.JSIsolate.leave">
-<tt class="descname">leave</tt><big>(</big><big>)</big><a class="headerlink" href="#PyV8.JSIsolate.leave" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="docutils">
-<dt>leave( (JSIsolate)arg1) -&gt; None :</dt>
-<dd><p class="first">Exits this isolate by restoring the previously entered one in the current thread. The isolate may still stay the same, if it was entered more than once.</p>
-<dl class="last docutils">
-<dt>C++ signature :</dt>
-<dd>void leave(class CIsolate {lvalue})</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
 <div class="toctree-wrapper compound">
 <ul class="simple">
 </ul>
@@ -115,15 +73,13 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Multi-Thread and Lock</a><ul>
 <li><a class="reference internal" href="#the-javascript-thread-and-isolate">The Javascript Thread and Isolate</a></li>
-<li><a class="reference internal" href="#jsisolate">JSIsolate</a><ul>
-</ul>
-</li>
+<li><a class="reference internal" href="#jsisolate">JSIsolate</a></li>
 </ul>
 </li>
 </ul>
@@ -134,15 +90,17 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="debugger.html"
                         title="next chapter">Debugger and Profiler</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="../_sources/api/multithread.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/api/multithread.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -156,7 +114,7 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -171,13 +129,13 @@
         <li class="right" >
           <a href="wrapper.html" title="Interoperability"
              >previous</a> |</li>
-        <li><a href="../index.html">PyV8 v1.0beta documentation</a> &raquo;</li>
-          <li><a href="api.html" >Public API</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">PyV8 1.0beta documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="api.html" >Public API</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2011, Flier Lu.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>
