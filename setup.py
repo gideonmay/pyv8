@@ -110,9 +110,6 @@ else:
 source_files = ["Utils.cpp", "Exception.cpp", "Context.cpp", "Engine.cpp", "Wrapper.cpp",
                 "Debug.cpp", "Locker.cpp", "AST.cpp", "PrettyPrinter.cpp", "PyV8.cpp"]
 
-source_files = ["Utils.cpp", "Exception.cpp", "Context.cpp", "Engine.cpp", "Wrapper.cpp",
-                "Debug.cpp", "Locker.cpp", "PyV8.cpp"]
-
 macros = [
     ("BOOST_PYTHON_STATIC_LIB", None),
 ]
@@ -304,10 +301,8 @@ arch = 'x64' if is_64bit else 'arm' if is_arm else 'ia32'
 mode = 'debug' if DEBUG else 'release'
 
 libraries += ['v8_base.' + arch,
-              'v8_snapshot' if V8_SNAPSHOT_ENABLED else ('v8_nosnapshot.' + arch),
-              'icuuc',
-              'icui18n',
-              'icudata']
+              'v8_snapshot' if V8_SNAPSHOT_ENABLED else ('v8_nosnapshot.' + arch)
+             ]
 
 if is_winnt:
     library_path = icu_path = "%s/build/%s/lib/" % (V8_HOME, mode)
@@ -563,8 +558,8 @@ def generate_probes():
 
 def prepare_v8():
     try:
-        checkout_v8()
-        prepare_gyp()
+        # checkout_v8()
+        # prepare_gyp()
         build_v8()
         generate_probes()
     except Exception as e:
@@ -575,14 +570,12 @@ def prepare_v8():
 class build(_build):
     def run(self):
         # prepare_v8()
-
         _build.run(self)
 
 
 class develop(_develop):
     def run(self):
         # prepare_v8()
-
         _develop.run(self)
 
 pyv8 = Extension(name="_PyV8",
