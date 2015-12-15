@@ -59,6 +59,14 @@ py::object MemoryAllocationCallbackStub<space, action>::s_callback;
 template<v8::ObjectSpace space, v8::AllocationAction action>
 typename MemoryAllocationCallbackStub<space, action>::lock_t MemoryAllocationCallbackStub<space, action>::s_callbackLock;
 
+class MallocArrayBufferAllocator : public v8::ArrayBuffer::Allocator {
+        public:
+                virtual void* Allocate(size_t length) { return malloc(length); }
+                virtual void* AllocateUninitialized(size_t length) { return malloc(length); }
+                virtual void Free(void* data, size_t length) { free(data); }
+};
+
+
 class MemoryAllocationManager
 {
   typedef std::map<std::pair<v8::ObjectSpace, v8::AllocationAction>, MemoryAllocationCallbackBase *> CallbackMap;
@@ -78,6 +86,8 @@ public:
     BOOST_PP_SEQ_FOR_EACH(ADD_CALLBACK_STUBS, kAllocationActionAllocate, OBJECT_SPACES);
     BOOST_PP_SEQ_FOR_EACH(ADD_CALLBACK_STUBS, kAllocationActionFree, OBJECT_SPACES);
     BOOST_PP_SEQ_FOR_EACH(ADD_CALLBACK_STUBS, kAllocationActionAll, OBJECT_SPACES);
+
+    v8::V8::SetArrayBufferAllocator(new MallocArrayBufferAllocator);
   }
 
   static void SetCallback(py::object callback, v8::ObjectSpace space, v8::AllocationAction action)
