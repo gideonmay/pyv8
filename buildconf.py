@@ -1,4 +1,3 @@
-
 # path to boost library
 # BOOST_HOME = None
 
