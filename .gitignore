@@ -1,1 +1,5 @@
 probes.h
+*.pyc
+PyV8.egg-info
+build
+dist
