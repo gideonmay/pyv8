@@ -558,8 +558,8 @@ def generate_probes():
 
 def prepare_v8():
     try:
-        # checkout_v8()
-        # prepare_gyp()
+        checkout_v8()
+        prepare_gyp()
         build_v8()
         generate_probes()
     except Exception as e:
@@ -569,13 +569,13 @@ def prepare_v8():
 
 class build(_build):
     def run(self):
-        # prepare_v8()
+        prepare_v8()
         _build.run(self)
 
 
 class develop(_develop):
     def run(self):
-        # prepare_v8()
+        prepare_v8()
         _develop.run(self)
 
 pyv8 = Extension(name="_PyV8",
